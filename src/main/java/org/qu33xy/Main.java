@@ -3,12 +3,18 @@ package org.qu33xy;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class Main extends JavaPlugin {
+public class Main extends JavaPlugin {
+
+    public static ItemStack boyFarmer;
+    public static ItemStack sandFarmer;
+    public static ItemStack kopaczFosy;
+
 
     @Override
     public void onEnable() {
@@ -24,10 +30,16 @@ public final class Main extends JavaPlugin {
         );
         registerCustomItems();
         Bukkit.getPluginManager().registerEvents(new PlaceBlock_Listener(), this);
+
+        GiveComamnd giveCommand = new GiveComamnd();
+        getCommand("boyfarmer").setExecutor(giveCommand);
+        getCommand("sandfarmer").setExecutor(giveCommand);
+        getCommand("kopaczfosy").setExecutor(giveCommand);
+
     }
 
-    private void registerCustomItems() {
-        ItemStack boyFarmer = new ItemStack(Material.OBSIDIAN);
+    public void registerCustomItems() {
+        boyFarmer = new ItemStack(Material.OBSIDIAN);
         ItemMeta boyMeta = boyFarmer.getItemMeta();
         boyMeta.setDisplayName("Boy Farmer");
         boyFarmer.setItemMeta(boyMeta);
@@ -38,7 +50,7 @@ public final class Main extends JavaPlugin {
         boyRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(boyRecipe);
 
-        ItemStack sandFarmer = new ItemStack(Material.SAND);
+        sandFarmer = new ItemStack(Material.SAND);
         ItemMeta sandMeta = sandFarmer.getItemMeta();
         sandMeta.setDisplayName("Sand Farmer");
         sandFarmer.setItemMeta(sandMeta);
@@ -49,7 +61,7 @@ public final class Main extends JavaPlugin {
         sandRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(sandRecipe);
 
-        ItemStack kopaczFosy = new ItemStack(Material.STICK);
+        kopaczFosy = new ItemStack(Material.STICK);
         ItemMeta kopaczMeta = kopaczFosy.getItemMeta();
         kopaczMeta.setDisplayName("Kopacz Fosy");
         kopaczFosy.setItemMeta(kopaczMeta);

@@ -2,3 +2,8 @@ name: Farmery_Gildie
 version: '0.1'
 main: org.qu33xy.Main
 api-version: '1.20'
+commands:
+  boyfarmer:
+  sandfarmer:
+  kopaczfosy:
+
