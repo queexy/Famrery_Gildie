@@ -19,18 +19,21 @@ public class PlaceBlock_Listener implements Listener {
         int z = block.getZ();
 
         if ("Kopacz Fosy".equals(name)) {
-            for (int y = block.getY(); y >= 0; y--) {
+            for (int y = block.getY(); y >= -64; y--) {
                 Block below = block.getWorld().getBlockAt(x, y, z);
+                if (below.getType() == Material.BEDROCK) break;
                 below.setType(Material.AIR);
             }
         } else if ("Sand Farmer".equals(name)) {
-            for (int y = block.getY() - 1; y >= 0; y--) {
+            for (int y = block.getY() - 1; y >= -64; y--) {
                 Block below = block.getWorld().getBlockAt(x, y, z);
+                if (below.getType() == Material.BEDROCK) break;
                 below.setType(Material.SAND);
             }
         } else if ("Boy Farmer".equals(name)) {
-            for (int y = block.getY() - 1; y >= 0; y--) {
+            for (int y = block.getY() - 1; y >= -64; y--) {
                 Block below = block.getWorld().getBlockAt(x, y, z);
+                if (below.getType() == Material.BEDROCK) break;
                 below.setType(Material.OBSIDIAN);
             }
         }
