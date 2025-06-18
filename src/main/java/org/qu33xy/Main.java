@@ -61,7 +61,7 @@ public class Main extends JavaPlugin {
         sandRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(sandRecipe);
 
-        kopaczFosy = new ItemStack(Material.STICK);
+        kopaczFosy = new ItemStack(Material.DIRT);
         ItemMeta kopaczMeta = kopaczFosy.getItemMeta();
         kopaczMeta.setDisplayName("Kopacz Fosy");
         kopaczFosy.setItemMeta(kopaczMeta);
