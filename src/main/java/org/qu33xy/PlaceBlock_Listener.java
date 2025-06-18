@@ -15,24 +15,25 @@ public class PlaceBlock_Listener implements Listener {
 
         String name = meta.getDisplayName();
         Block block = event.getBlockPlaced();
+        Material material;
         int x = block.getX();
         int z = block.getZ();
-
-        if (name.equals("Boy Farmer")) {
-            for (int y = block.getY() - 1; y >= 0; y--) {
-                Block below = block.getWorld().getBlockAt(x, y, z);
-                below.setType(Material.OBSIDIAN);
-            }
-        } else if (name.equals("Sand Farmer")) {
-            for (int y = block.getY() - 1; y >= 0; y--) {
-                Block below = block.getWorld().getBlockAt(x, y, z);
-                below.setType(Material.SAND);
-            }
-        } else if (name.equals("Kopacz Fosy")) {
-            for (int y = block.getY() - 1; y >= 0; y--) {
-                Block below = block.getWorld().getBlockAt(x, y, z);
-                below.setType(Material.AIR);
-            }
+        switch (name) {
+            case "BoyFarmer":
+                material = Material.OBSIDIAN;
+                break;
+            case "SandFarmer":
+                material = Material.SAND;
+                break;
+            case "KopaczFosy":
+                material = Material.AIR;
+                break;
+            default:
+                return;
+        }
+        for (int y = block.getY() - 1; y >= 0; y--) {
+            Block below = block.getWorld().getBlockAt(x, y, z);
+            below.setType(material);
         }
     }
 }
